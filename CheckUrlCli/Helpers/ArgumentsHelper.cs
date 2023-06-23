@@ -12,7 +12,7 @@ namespace CheckUrlCli.Helpers
                 throw new InternalErrorException(new Error("Incorrect count of arguments."));
             }
 
-            var url = args[0];
+            var url = CorrectionUrl(args[0]);
             if (!UriHelper.IsValidUri(url))
             {
                 throw new InternalErrorException(new Error("Incorrect URI."));
@@ -24,6 +24,14 @@ namespace CheckUrlCli.Helpers
             {
                 throw new InternalErrorException(new Error("Incorrect attempts count."));
             }
+        }
+        public static string CorrectionUrl(string url)
+        {
+            if (!UriHelper.IsValidUri(url))
+            {
+                url = "http://" + url;
+            }
+            return url;
         }
     }
 }

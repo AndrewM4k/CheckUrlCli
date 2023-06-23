@@ -12,7 +12,7 @@ namespace CheckUrlCli
             {
                 ArgumentsHelper.ThrowOnIncorrectArguments(args);
 
-                var url = args[0];
+                var url = ArgumentsHelper.CorrectionUrl(args[0]);
                 var count = int.Parse(args[1]);
 
                 var httpService = new HttpService();
